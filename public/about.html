@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .section-img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+    <title>About</title>
+    <!-- Script for HTMX -->
+    <script src=https://unpkg.com/htmx.org@1.9.11 integrity="sha384-
+      0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+      crossorigin="anonymous">
+    </script>
+    <!-- Bring in Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="/">Montana PM2.5 Map</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="about.html">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/mt-pm-concentration-map/" target="_blank">GitHub</a></li>
+            <li><a href="https://inbre.montana.edu/" target="_blank">Funding</a></li>
+            <li><a href="https://twitter.com/pm25map_mt" target="_blank">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="text-center my-5">
+        <h1>About Our Project</h1>
+      </header>
+
+      <!-- First Section -->
+      <section>
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Our Mission</h2>
+            <p>This website is a part of a project to estimate and predict hazardous gas particle concentrations across Montana. This project is focused on particulate matter under 2.5 micrometers in diameter (PM-2.5). Exposure to these particles can have a severe impact on human health, even leading to cancer and premature death. Although PM-2.5 is created in lots of ways, wildfires across Canada and the American west are a major contributor.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="Images/station.jpeg" alt="" class="section-img">
+          </div>
+        </div>
+      </section>
+      
+      <!-- Second Section -->
+      <section class="my-5">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="Images/map.png" alt="" class="section-img">
+          </div>
+          <div class="col-md-6">
+            <h2>Progress</h2>
+            <p>There are only 20 ground-stations monitoring PM-2.5 in Montana (DEQ, 2022). The first part of this project involved correlating ground-station measurements of PM-2.5 with satellite data to create a full coverage concentration map. We used aerosol optical depth and several other climate variables in our models. The random forest regression model outperformed simple and multiple linear regression, so we utilized it on our Google Earth Engine app to generate the daily estimates of PM-2.5 concentrations. We are in the process of writing a manuscript for publication.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Third Section -->
+      <section>
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Next Steps</h2>
+            <p>The next phase of the project is aimed at predicting PM-2.5 concentrations three days in advance. Our goal is to provide Montanans with advanced notice of hazardous gas in their area, allowing them to prepare to stay inside if the air quality is bad. We will continue to provide updates on this website.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="Images/forest.jpg" alt="Section Image" class="section-img">
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

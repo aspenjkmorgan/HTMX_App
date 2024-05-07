@@ -3,68 +3,93 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- Scripts for HTMX and Tailwind respectively-->
+   <link rel="stylesheet" href="/Styles/index.css">
+    <title>Home</title>
+    <!-- Script for HTMX -->
     <script src=https://unpkg.com/htmx.org@1.9.11 integrity="sha384-
       0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
       crossorigin="anonymous">
     </script>
-    <script src=https://cdn.tailwindcss.com></script>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.11.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.11.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.11.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <!-- Bring in Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Include map.html using jQuery -->
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("map.html"); 
+    });
+    </script> 
   </head>
   <body>
-    <div class="border-blue-600 border 2 w-96 mx-auto my-5 content-center">
-      <form hx-get="http://localhost:5000/example-project4/us-central1/test" hx-target="#userList" hx-swap="beforebegin">
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" value="">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="/">Montana PM2.5 Map</a>
         </div>
-        <div>
-          <label>Major</label>
-          <input type="text" name="major" value="">
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="about.html">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/mt-pm-concentration-map/" target="_blank">GitHub</a></li>
+            <li><a href="https://inbre.montana.edu/" target="_blank">Funding</a></li>
+            <li><a href="https://twitter.com/pm25map_mt" target="_blank">Twitter</a></li>
+          </ul>
         </div>
-        <div>
-          <label>Quote</label>
-          <input type="text" name="quote" value="">
-        </div>
-        <button>Submit</button>
-    </form>
-  </div>
-  <div class="users">
-    <br id="userList"/>
-  </div>
+      </div>
+    </nav>
+    <!-- Drawer -->
+    <div id="mySidenav" class="sidenav">
+      <ul>
+        <!-- Close menu -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavDrawer()">&times;</a>
+        <h2 id="legend">Legend</h2>
+        <!-- Legend values (AQI): open modal -->
+        <button id="button1" >Healthy</button>
+        <button id="button2">Moderate</button>
+        <button id="button3">Unhealthy for sensitive groups</button>
+        <button id="button4">Unhealthy</button>
+        <button id="button5">Very Unhealthy</button>
+        <button id="button6">Hazardous</button>
+        <!-- Search bar -->
+        <input id="search-bar" type="search" 
+          name="search" placeholder="Search locations..." 
+          hx-post="http://localhost:5001/example-project4/us-central1/search" 
+          hx-trigger="input changed delay:500ms, search" 
+          hx-target="#search-results">
+        <!-- Table -->
+        <table class="table">
+          <tbody id="search-results">
+          </tbody>
+        </table>
+      </ul>
+      </div>
+    </div>
+
+    <!-- link to open the sidenav -->
+    <button onclick="openNavDrawer()" id="drawer-but">Legend</button>
+    
+    <!-- pushes page content to the right -->
+    <div id="main">
+         <!-- bring over map from map.html -->
+        <div id="includedContent"></div>
+    </div>
+
+    <script>
+    function openNavDrawer() {
+      document.getElementById("mySidenav").style.width = "300px";
+    }
+
+    function closeNavDrawer() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
   </body>
 </html>
